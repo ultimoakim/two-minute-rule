@@ -22,13 +22,14 @@ export default function NewReportPage({user, setUser}) {
             setActiveLvl(lvlsOfImpRef.current[0]);
         }
         getHabits();
+        
+        async function getNotReadyHabits() {
+            const notReadyHabits = await reportsAPI.getNotReadyHabits();
+            setNotReadyHabits(notReadyHabits);
+        }
+        getNotReadyHabits();
     }, []);
 
-    async function getNotReadyHabits() {
-        const notReadyHabits = await reportsAPI.getNotReadyHabits();
-        setNotReadyHabits(notReadyHabits);
-    }
-    getNotReadyHabits();
 
     return (
         <>

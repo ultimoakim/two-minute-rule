@@ -19,6 +19,20 @@ const reportSchema = new Schema({
     toJSON: {virtuals: true}
 });
 
+lineHabitSchema.virtual('habitDesc').get(function() {
+    return this.habit.name;
+})
+
 reportSchema.virtual('reportId').get(function() {
     return this.id.slice(-6).toUpperCase();
 });
+
+reportSchema.statics.getNotReadyHabits = function(userId) {
+    return this.findOneAndUpdate(
+        {user: userId, isSubmitted: false},
+        {user: userId},
+        {upsert: true, new: true},
+    );
+};
+
+module.exports = mongoose.model('Report', reportSchema);

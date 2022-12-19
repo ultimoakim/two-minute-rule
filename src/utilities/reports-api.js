@@ -3,9 +3,9 @@ const BASE_URL = '/api/reports';
 
 // Retrieve a NOT submitted report for the logged-in user!
 export function getNotReadyHabits() {
-    return sendRequest(`${BASE_URL}/notFinishedHabits`);
+    return sendRequest(`${BASE_URL}/notReadyHabits`);
 }
 
-export function addHabitToNotReadyHabits(habitId) {
-    return sendRequest(`${BASE_URL}/notFinishedHabits/habits/${habitId}`, 'POST');
-}
+// export function addHabitToNotReadyHabits(habitId) {
+//     return sendRequest(`${BASE_URL}/notReadyHabits/habits/${habitId}`, 'POST');
+// }
