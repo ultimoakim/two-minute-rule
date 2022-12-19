@@ -18,7 +18,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/reports/new" element={<NewReportPage />} />
+            <Route path="/reports/new" element={<NewReportPage user={user} setUser={setUser} />} />
             <Route path="/reports" element={<ReportHistoryPage />} />
           </Routes>
         </>

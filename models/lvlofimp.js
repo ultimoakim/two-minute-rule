@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const lvlOfImpSchema = new Schema({
     level: { type: Number, required: true, min: 1, max: 3 },
-    sortOrder: Number
+    sortOrder: Number,
 }, {
     timestamps: true
 });
