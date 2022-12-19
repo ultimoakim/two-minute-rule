@@ -8,7 +8,7 @@ const lineHabitSchema = new Schema({
 }, {
     timestamps: true,
     toJSON: {virtuals: true}
-})
+});
 
 const reportSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
