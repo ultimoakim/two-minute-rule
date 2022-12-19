@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import * as habitsAPI from '../../utilities/habits-api';
+import * as reportsAPI from '../../utilities/reports-api';
 import UnfinishedHabitsList from '../../components/UnfinishedHabitsList/UnfinishedHabitsList';
 import LvlOfImpList from '../../components/LvlOfImpList/LvlOfImpList';
 import FinishedHabitsList from '../../components/FinishedHabitsList/FinishedHabitsList';
@@ -11,6 +12,7 @@ export default function NewReportPage({user, setUser}) {
     const [unfinishedHabits, setUnfinishedHabits] = useState([]);
     const lvlsOfImpRef = useRef([]);
     const [activeLvl, setActiveLvl] = useState('');
+    const [notReadyHabits, setNotReadyHabits] = useState(null);
 
     useEffect(function() {
         async function getHabits() {
@@ -21,6 +23,12 @@ export default function NewReportPage({user, setUser}) {
         }
         getHabits();
     }, []);
+
+    async function getNotReadyHabits() {
+        const notReadyHabits = await reportsAPI.getNotReadyHabits();
+        setNotReadyHabits(notReadyHabits);
+    }
+    getNotReadyHabits();
 
     return (
         <>
