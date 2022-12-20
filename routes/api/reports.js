@@ -8,5 +8,7 @@ router.get('/notReadyHabits', reportsCtrl.notReadyHabits);
 router.post('/notReadyHabits/habits/:id', reportsCtrl.addToNotReadyHabits);
 // POST api/reports/notReadyHabits/qty
 router.put('/notReadyHabits/qty', reportsCtrl.setHabitQtyInNotReadyHabits);
+// POST /api/reports/notReadyHabits/submitReport
+router.post('/notReadyHabits/submitReport', reportsCtrl.submitReport);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import LineHabit from "../LineHabit/LineHabit";
 
-export default function FinishedHabitsList({report, handleChangeQty}) {
+export default function FinishedHabitsList({report, handleChangeQty, handleSubmitReport}) {
 
     if (!report) return null;
 
@@ -33,9 +33,9 @@ export default function FinishedHabitsList({report, handleChangeQty}) {
                                 :
                                 <button
                                     className="btn-sm"
-                                    // onClick={handleCheckout}
+                                    onClick={handleSubmitReport}
                                     disabled={!lineHabits.length}
-                                >CHECKOUT</button>
+                                >Submit Report!</button>
                             }
                             {/* <span>{report.totalQty}</span> */}
                             {/* <span className="right">${report.orderTotal.toFixed(2)}</span> */}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import * as habitsAPI from '../../utilities/habits-api';
 import * as reportsAPI from '../../utilities/reports-api';
 import UnfinishedHabitsList from '../../components/UnfinishedHabitsList/UnfinishedHabitsList';
@@ -11,6 +12,7 @@ export default function NewReportPage({ user, setUser }) {
 
     const [unfinishedHabits, setUnfinishedHabits] = useState([]);
     const lvlsOfImpRef = useRef([]);
+    const navigate = useNavigate();
     const [activeLvl, setActiveLvl] = useState('');
     const [notReadyHabits, setNotReadyHabits] = useState(null);
 
@@ -41,6 +43,11 @@ export default function NewReportPage({ user, setUser }) {
         setNotReadyHabits(updatedNotReadyHabits);
     }
 
+    async function handleSubmitReport() {
+        await reportsAPI.submitReport();
+        navigate('/reports');
+    }
+
 
     return (
         <>
@@ -61,6 +68,7 @@ export default function NewReportPage({ user, setUser }) {
             <FinishedHabitsList
                 report={notReadyHabits}
                 handleChangeQty={handleChangeQty}
+                handleSubmitReport={handleSubmitReport}
             />
         </>
     );

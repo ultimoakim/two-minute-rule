@@ -13,3 +13,7 @@ export function addHabitToNotReadyHabits(habitId) {
 export function setHabitQtyInNotReadyHabits(habitId, newQty) {
     return sendRequest(`${BASE_URL}/notReadyHabits/qty`, 'PUT', {habitId, newQty});
 }
+
+export function submitReport() {
+    return sendRequest(`${BASE_URL}/notReadyHabits/submitReport`, 'POST');
+}
