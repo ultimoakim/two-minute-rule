@@ -1,6 +1,6 @@
 import LineHabit from "../LineHabit/LineHabit";
 
-export default function FinishedHabitsList({report}) {
+export default function FinishedHabitsList({report, handleChangeQty}) {
 
     if (!report) return null;
 
@@ -9,6 +9,7 @@ export default function FinishedHabitsList({report}) {
             lineHabit={habit}
             isSubmitted={report.isSubmitted}
             key={habit._id}
+            handleChangeQty={handleChangeQty}
         />
         )
 

@@ -7,14 +7,14 @@ import FinishedHabitsList from '../../components/FinishedHabitsList/FinishedHabi
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
 
-export default function NewReportPage({user, setUser}) {
+export default function NewReportPage({ user, setUser }) {
 
     const [unfinishedHabits, setUnfinishedHabits] = useState([]);
     const lvlsOfImpRef = useRef([]);
     const [activeLvl, setActiveLvl] = useState('');
     const [notReadyHabits, setNotReadyHabits] = useState(null);
 
-    useEffect(function() {
+    useEffect(function () {
         async function getHabits() {
             const habits = await habitsAPI.getAll();
             lvlsOfImpRef.current = [...new Set(habits.map(habit => habit.lvlOfImp.level))];
@@ -29,6 +29,17 @@ export default function NewReportPage({user, setUser}) {
         }
         getNotReadyHabits();
     }, []);
+
+    // Event Handlers Below Here!
+    async function handleAddToReport(habitId) {
+        const updatedNotReadyHabits = await reportsAPI.addHabitToNotReadyHabits(habitId);
+        setNotReadyHabits(updatedNotReadyHabits);
+    }
+
+    async function handleChangeQty(habitId, newQty) {
+        const updatedNotReadyHabits = await reportsAPI.setHabitQtyInNotReadyHabits(habitId, newQty);
+        setNotReadyHabits(updatedNotReadyHabits);
+    }
 
 
     return (
@@ -45,9 +56,12 @@ export default function NewReportPage({user, setUser}) {
             <h2>❌ Unfinished Habits: </h2>
             <UnfinishedHabitsList
                 unfinishedHabits={unfinishedHabits.filter(habit => habit.lvlOfImp.level === activeLvl)}
-                // handleAddToReport={handleAddToReport}
+                handleAddToReport={handleAddToReport}
             />
-            <FinishedHabitsList report={notReadyHabits} />
+            <FinishedHabitsList
+                report={notReadyHabits}
+                handleChangeQty={handleChangeQty}
+            />
         </>
     );
 }

@@ -8,7 +8,7 @@ export default function UnfinishedHabitsListItems({habitItem, handleAddToReport}
                 <div className='level'>Level of Importance: {habitItem.lvlOfImp.level}</div>
                 <div className='description'>{habitItem.description}</div>
                 <div>
-                    <button className='addBtn'>Finished!</button>
+                    <button className='addBtn' onClick={() => handleAddToReport(habitItem._id)}>Finished!</button>
                 </div>
             </div>
         </>

@@ -6,7 +6,7 @@ export default function UnfinishedHabitsList({ unfinishedHabits, handleAddToRepo
     <UnfinishedHabitsListItems
       key={habit._id}
       habitItem={habit}
-      // handleAddToReport={handleAddToReport}
+      handleAddToReport={handleAddToReport}
     />
   );
 

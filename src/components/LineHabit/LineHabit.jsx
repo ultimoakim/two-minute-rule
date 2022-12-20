@@ -1,4 +1,4 @@
-export default function LineHabit({ lineHabit, isSubmitted }) {
+export default function LineHabit({ lineHabit, isSubmitted, handleChangeQty }) {
     return (
         <div className="LineItem">
             <div className="flex-ctr-ctr">{lineHabit.habit.lvlOfImp}</div>
@@ -10,18 +10,19 @@ export default function LineHabit({ lineHabit, isSubmitted }) {
                 {!isSubmitted &&
                     <button
                         className="btn-xs"
-                        // onClick={() => handleChangeQty(lineHabit.habit._id, lineHabit.qty - 1)}
-                    >−</button>
+                        onClick={() => handleChangeQty(lineHabit.habit._id, lineHabit.qty - 1)}
+                    >Remove</button>
                 }
-                <span>{lineHabit.qty}</span>
-                {!isSubmitted &&
+                <span>Quantity: {lineHabit.qty}</span>
+                {/* {!isSubmitted &&
                     <button
                         className="btn-xs"
                         // onClick={() => handleChangeQty(lineHabit.habit._id, lineHabit.qty + 1)}
                     >+</button>
-                }
+                } */}
             </div>
-            <div className="ext-price">${lineHabit.habitDesc}</div>
+            {/* Don't really need this thing below, but that's up to you. */}
+            {/* <div className="ext-price">${lineHabit.habitDesc}</div> */}
         </div>
     );
 }
