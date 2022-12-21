@@ -19,7 +19,7 @@ export default function App() {
           <Routes>
             {/* Route components in here */}
             <Route path="/reports/new" element={<NewReportPage user={user} setUser={setUser} />} />
-            <Route path="/reports" element={<ReportHistoryPage />} />
+            <Route path="/reports" element={<ReportHistoryPage user={user} setUser={setUser} />} />
           </Routes>
         </>
         :

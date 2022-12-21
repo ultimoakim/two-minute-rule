@@ -5,6 +5,7 @@ module.exports = {
     addToNotReadyHabits,
     setHabitQtyInNotReadyHabits,
     submitReport,
+    getAllForUser,
 };
 
 // A 'notReadyHabit' is a habit that is not yet submitted into a report.
@@ -35,3 +36,8 @@ async function submitReport(req, res) {
     await notReadyHabits.save();
     res.json(notReadyHabits);
 }
+
+async function getAllForUser(req, res) {
+    const reports = await Report.find({user: req.user._id, isSubmitted: true}).sort('-updatedAt');
+    res.json(reports);
+  }

@@ -1,7 +1,6 @@
 import sendRequest from './send-request';
 const BASE_URL = '/api/reports';
 
-// Retrieve a NOT submitted report for the logged-in user!
 export function getNotReadyHabits() {
     return sendRequest(`${BASE_URL}/notReadyHabits`);
 }
@@ -16,4 +15,8 @@ export function setHabitQtyInNotReadyHabits(habitId, newQty) {
 
 export function submitReport() {
     return sendRequest(`${BASE_URL}/notReadyHabits/submitReport`, 'POST');
+}
+
+export function getAllForUser() {
+    return sendRequest(`${BASE_URL}`);
 }

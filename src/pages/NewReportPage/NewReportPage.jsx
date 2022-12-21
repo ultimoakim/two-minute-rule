@@ -5,6 +5,7 @@ import * as reportsAPI from '../../utilities/reports-api';
 import UnfinishedHabitsList from '../../components/UnfinishedHabitsList/UnfinishedHabitsList';
 import LvlOfImpList from '../../components/LvlOfImpList/LvlOfImpList';
 import FinishedHabitsList from '../../components/FinishedHabitsList/FinishedHabitsList';
+import ReportDetail from '../../components/ReportDetail/ReportDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
 
