@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as habitsAPI from '../../utilities/habits-api';
 import * as reportsAPI from '../../utilities/reports-api';
+import AddHabit from '../../components/AddHabit/AddHabit';
 import UnfinishedHabitsList from '../../components/UnfinishedHabitsList/UnfinishedHabitsList';
 import LvlOfImpList from '../../components/LvlOfImpList/LvlOfImpList';
 import FinishedHabitsList from '../../components/FinishedHabitsList/FinishedHabitsList';
@@ -49,6 +50,11 @@ export default function NewReportPage({ user, setUser }) {
         navigate('/reports');
     }
 
+    async function handleAddHabit(habitData) {
+        const habit = await habitsAPI.addHabit(habitData);
+        setUnfinishedHabits([...unfinishedHabits, habit]);
+    }
+
 
     return (
         <>
@@ -56,6 +62,7 @@ export default function NewReportPage({ user, setUser }) {
             <button onClick={() => setUnfinishedHabits(Date.now())}>Trigger Re-Render!</button>
             <h2>Level of Importance: </h2>
             <h4>NOTE: As a general rule, Level 3 should be the most important habits, while Level 1 is the less-important habits.</h4>
+            <AddHabit handleAddHabit={handleAddHabit} />
             <LvlOfImpList
                 lvls={lvlsOfImpRef.current}
                 activeLvls={activeLvl}

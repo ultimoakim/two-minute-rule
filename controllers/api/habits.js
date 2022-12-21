@@ -3,6 +3,7 @@ const Habit = require('../../models/habit');
 module.exports = {
     index,
     show,
+    create,
 };
 
 async function index(req, res) {
@@ -13,5 +14,11 @@ async function index(req, res) {
 
 async function show(req, res) {
     const habit = await Habit.findById(req.params.id);
+    res.json(habit);
+}
+
+async function create(req, res) {
+    req.body.user = req.user._id;
+    const habit = await Habit.create(req.body);
     res.json(habit);
 }

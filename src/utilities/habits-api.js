@@ -8,3 +8,7 @@ export function getAll() {
 export function getById(id) {
     return sendRequest(`${BASE_URL}/${id}`);
 }
+
+export function addHabit(habitData) {
+    return sendRequest(BASE_URL, 'POST', habitData);
+}
