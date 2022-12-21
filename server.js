@@ -29,6 +29,7 @@ app.use('/api/users', require('./routes/api/users'));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/habits', ensureLoggedIn, require('./routes/api/habits'));
 app.use('/api/reports', ensureLoggedIn, require('./routes/api/reports'));
+app.use('/api/levels', ensureLoggedIn, require('./routes/api/levels'));
 
 
 

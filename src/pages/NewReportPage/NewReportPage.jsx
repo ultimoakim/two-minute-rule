@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as habitsAPI from '../../utilities/habits-api';
 import * as reportsAPI from '../../utilities/reports-api';
+import * as levelsAPI from '../../utilities/levels-api';
 import AddHabit from '../../components/AddHabit/AddHabit';
 import UnfinishedHabitsList from '../../components/UnfinishedHabitsList/UnfinishedHabitsList';
 import LvlOfImpList from '../../components/LvlOfImpList/LvlOfImpList';
@@ -17,6 +18,7 @@ export default function NewReportPage({ user, setUser }) {
     const navigate = useNavigate();
     const [activeLvl, setActiveLvl] = useState('');
     const [notReadyHabits, setNotReadyHabits] = useState(null);
+    const [levels, setLevels] = useState([]);
 
     useEffect(function () {
         async function getHabits() {
@@ -32,6 +34,12 @@ export default function NewReportPage({ user, setUser }) {
             setNotReadyHabits(notReadyHabits);
         }
         getNotReadyHabits();
+
+        async function getLevels() {
+            const levels = await levelsAPI.getAll();
+            setLevels(levels);
+        }
+        getLevels();
     }, []);
 
     // Event Handlers Below Here!
@@ -62,7 +70,10 @@ export default function NewReportPage({ user, setUser }) {
             <button onClick={() => setUnfinishedHabits(Date.now())}>Trigger Re-Render!</button>
             <h2>Level of Importance: </h2>
             <h4>NOTE: As a general rule, Level 3 should be the most important habits, while Level 1 is the less-important habits.</h4>
-            <AddHabit handleAddHabit={handleAddHabit} />
+            <AddHabit
+                handleAddHabit={handleAddHabit}
+                levels={levels} setLevels={setLevels}
+            />
             <LvlOfImpList
                 lvls={lvlsOfImpRef.current}
                 activeLvls={activeLvl}

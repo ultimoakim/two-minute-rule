@@ -1,21 +1,19 @@
 import { useState } from 'react';
+import LevelList from "../../components/LevelList/LevelList";
 
-export default function AddHabit({handleAddHabit}) {
-
-    let habitLvl;
+export default function AddHabit({ handleAddHabit, levels, setLevels }) {
+    const levelsIdList = levels.map(l => l._id);
+    const levelsLevelList = levels.map(l => l.level);
     const [habitName, setHabitName] = useState('');
     const [habitDesc, setHabitDesc] = useState('');
-    const [habitLvlLevel, setHabitLvlLevel] = useState(1);
+    const [habitLvlLevel, setHabitLvlLevel] = useState(levelsIdList[2]);
 
-    if (habitLvlLevel === 1) {
-        habitLvl = '63a361115888cece75835663';
-    } else if (habitLvlLevel === 2) {
-        habitLvl = '63a361115888cece75835664';
-    } else {
-        habitLvl = '63a361115888cece75835665';
-    }
+    console.log(levelsIdList[0]);
+    console.log(levelsIdList[1]);
+    console.log(levelsIdList[2]);
 
-    const newHabit = { name: habitName, lvlOfImp: habitLvl, description: habitDesc };
+
+    const newHabit = { name: habitName, lvlOfImp: habitLvlLevel, description: habitDesc };
 
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -34,9 +32,9 @@ export default function AddHabit({handleAddHabit}) {
                 />
                 <label>Level of Importance: </label>
                 <select value={habitLvlLevel} onChange={evt => setHabitLvlLevel(evt.target.value)}>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
+                    <option value={levelsIdList[0]}>{levelsLevelList[0]}</option>
+                    <option value={levelsIdList[1]}>{levelsLevelList[1]}</option>
+                    <option value={levelsIdList[2]}>{levelsLevelList[2]}</option>
                 </select>
                 <label>Description: </label>
                 <textarea
@@ -45,6 +43,7 @@ export default function AddHabit({handleAddHabit}) {
                 ></textarea>
                 <button type='submit'>Add Habit!</button>
             </form>
+
         </>
     );
 }
