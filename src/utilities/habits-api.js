@@ -16,3 +16,7 @@ export function addHabit(habitData) {
 export function deleteHabit(id) {
     return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
+
+export function editHabit(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'PUT');
+}

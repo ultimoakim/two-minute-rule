@@ -8,6 +8,8 @@ router.get('/', habitsCtrl.index);
 router.get('/:id', habitsCtrl.show);
 // POST /api/habits
 router.post('/', habitsCtrl.create);
+// PUT /api/habits/:id
+router.put('/:id', habitsCtrl.updateHabit);
 // DELETE /api/habits/:id
 router.delete('/:id', habitsCtrl.deleteHabit);
 

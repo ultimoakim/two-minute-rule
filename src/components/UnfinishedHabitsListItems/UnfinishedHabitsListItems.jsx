@@ -2,7 +2,7 @@ import './UnfinishedHabitsListItems.css';
 import { useState } from 'react';
 import EditHabitForm from '../../components/EditHabitForm/EditHabitForm';
 
-export default function UnfinishedHabitsListItems({ habitItem, handleAddToReport, handleDeleteHabit, handleAddHabit, levels, setLevels }) {
+export default function UnfinishedHabitsListItems({ habitItem, handleAddToReport, handleDeleteHabit, handleAddHabit, levels, setLevels, handleEditHabit }) {
 
     const [editForm, setEditForm] = useState(false);
 
@@ -18,7 +18,7 @@ export default function UnfinishedHabitsListItems({ habitItem, handleAddToReport
                     <button className='addBtn' onClick={() => handleAddToReport(habitItem._id)}>Finished!</button>
                     <button onClick={() => handleDeleteHabit(habitItem._id)}>Delete Habit</button>
                     <button onClick={() => setEditForm(!editForm)}>
-                        {editForm ? 'Cancel' : 'Edit Habit'}
+                        {editForm ? 'Cancel Editing' : 'Edit Habit'}
                     </button>
                     {
                         editForm ? 
@@ -26,6 +26,8 @@ export default function UnfinishedHabitsListItems({ habitItem, handleAddToReport
                             handleAddHabit={handleAddHabit}
                             levels={levels}
                             setLevels={setLevels}
+                            handleEditHabit={handleEditHabit}
+                            habitItem={habitItem}
                         />
                         :
                         <h4></h4>

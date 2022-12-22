@@ -1,17 +1,18 @@
 import {useState} from 'react';
 
-export default function EditHabitForm(handleAddHabit, levels, setLevels) {
+export default function EditHabitForm({handleAddHabit, levels, setLevels, handleEditHabit, habitItem}) {
+    const levelsIdList = levels.map(l => l._id);
+    const levelsLevelList = levels.map(l => l.level);
+    const [habitName, setHabitName] = useState(habitItem.name);
+    const [habitDesc, setHabitDesc] = useState(habitItem.description);
+    const [habitLvlLevel, setHabitLvlLevel] = useState(habitItem.lvlOfImp);
 
-    const [habitName, setHabitName] = useState('');
-    const [habitDesc, setHabitDesc] = useState('');
-    const [habitLvlLevel, setHabitLvlLevel] = useState();
-
-    const newHabit = { name: habitName, lvlOfImp: habitLvlLevel, description: habitDesc };
+    const existingHabit = { name: habitName, lvlOfImp: habitLvlLevel, description: habitDesc };
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        handleAddHabit(newHabit);
-        console.log(newHabit);
+        handleEditHabit(existingHabit);
+        console.log(existingHabit);
     }
     return(
         <>
@@ -19,17 +20,19 @@ export default function EditHabitForm(handleAddHabit, levels, setLevels) {
             <form onSubmit={handleSubmit}>
                 <label>Name of Habit: </label>
                 <input
-                    value='Something'
+                    value={habitName}
+                    onChange={(evt) => setHabitName(evt.target.value)}
                 />
                 <label>Level of Importance: </label>
-                <select value={2}>
-                    <option value={1}>{1}</option>
-                    <option value={2}>{2}</option>
-                    <option value={3}>{3}</option>
+                <select value={2} onChange={(evt) => setHabitLvlLevel(evt.target.value)}>
+                    <option value={levelsIdList[0]}>{levelsLevelList[0]}</option>
+                    <option value={levelsIdList[1]}>{levelsLevelList[1]}</option>
+                    <option value={levelsIdList[2]}>{levelsLevelList[2]}</option>
                 </select>
                 <label>Description: </label>
                 <textarea
-                    value='Something'
+                    value={habitDesc}
+                    onChange={(evt) => setHabitDesc(evt.target.value)}
                 ></textarea>
                 <button type='submit'>Edit Habit!</button>
             </form>
