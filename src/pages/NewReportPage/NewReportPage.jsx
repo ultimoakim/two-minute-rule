@@ -75,7 +75,8 @@ export default function NewReportPage({ user, setUser }) {
             <h4>NOTE: As a general rule, Level 3 should be the most important habits, while Level 1 is the less-important habits.</h4>
             <AddHabit
                 handleAddHabit={handleAddHabit}
-                levels={levels} setLevels={setLevels}
+                levels={levels} 
+                setLevels={setLevels}
             />
             <LvlOfImpList
                 lvls={lvlsOfImpRef.current}
@@ -87,6 +88,9 @@ export default function NewReportPage({ user, setUser }) {
                 unfinishedHabits={unfinishedHabits.filter(habit => habit.lvlOfImp.level === activeLvl)}
                 handleAddToReport={handleAddToReport}
                 handleDeleteHabit={handleDeleteHabit}
+                handleAddHabit={handleAddHabit}
+                levels={levels}
+                setLevels={setLevels}
             />
             <FinishedHabitsList
                 report={notReadyHabits}

@@ -1,6 +1,6 @@
 import UnfinishedHabitsListItems from "../UnfinishedHabitsListItems/UnfinishedHabitsListItems";
 
-export default function UnfinishedHabitsList({ unfinishedHabits, handleAddToReport, handleDeleteHabit }) {
+export default function UnfinishedHabitsList({ unfinishedHabits, handleAddToReport, handleDeleteHabit, handleAddHabit, levels, setLevels }) {
 
   const habits = unfinishedHabits.map(habit =>
     <UnfinishedHabitsListItems
@@ -8,6 +8,9 @@ export default function UnfinishedHabitsList({ unfinishedHabits, handleAddToRepo
       habitItem={habit}
       handleAddToReport={handleAddToReport}
       handleDeleteHabit={handleDeleteHabit}
+      handleAddHabit={handleAddHabit}
+      levels={levels}
+      setLevels={setLevels}
     />
   );
 

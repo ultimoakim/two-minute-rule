@@ -43,7 +43,6 @@ export default function AddHabit({ handleAddHabit, levels, setLevels }) {
                 ></textarea>
                 <button type='submit'>Add Habit!</button>
             </form>
-
         </>
     );
 }

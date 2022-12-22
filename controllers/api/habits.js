@@ -27,6 +27,6 @@ async function create(req, res) {
 
 async function deleteHabit(req, res) {
     req.body.user = req.user._id;
-    const habit = await Habit.findOneAndDelete(req.params.id);
+    const habit = await Habit.deleteOne({user: req.user._id});
     res.json(habit);
 }
