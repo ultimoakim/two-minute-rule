@@ -4,6 +4,7 @@ module.exports = {
     index,
     show,
     create,
+    deleteHabit
 };
 
 async function index(req, res) {
@@ -13,6 +14,7 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
+    req.body.user = req.user._id;
     const habit = await Habit.findById(req.params.id);
     res.json(habit);
 }
@@ -20,5 +22,11 @@ async function show(req, res) {
 async function create(req, res) {
     req.body.user = req.user._id;
     const habit = await Habit.create(req.body);
+    res.json(habit);
+}
+
+async function deleteHabit(req, res) {
+    req.body.user = req.user._id;
+    const habit = await Habit.findOneAndDelete(req.params.id);
     res.json(habit);
 }

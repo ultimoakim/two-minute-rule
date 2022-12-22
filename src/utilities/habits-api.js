@@ -12,3 +12,7 @@ export function getById(id) {
 export function addHabit(habitData) {
     return sendRequest(BASE_URL, 'POST', habitData);
 }
+
+export function deleteHabit(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}

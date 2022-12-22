@@ -14,10 +14,10 @@ const Habit = require('./models/habit');
 
   await Habit.deleteMany({});
   const habits = await Habit.create([
-    {name: 'Studying French', lvlOfImp: lvlOfImps[2], description: `I will study at least ten pages of my textbook a day.`},
-    {name: 'Learning how to cook', lvlOfImp: lvlOfImps[2], description: `Watch Gordon Ramsay's videos and copy his style of cooking!`},
-    {name: 'Exercise', lvlOfImp: lvlOfImps[1], description: `10 squats, 10 burpees, 10 push-ups, 10 sit-ups`},
-    {name: 'Improving social skills', lvlOfImp: lvlOfImps[0], description: `I will learn how to talk to people by talking to someone new every day.`},
+    {user: '639f9f3d587a58ef0f055981', name: 'Studying French', lvlOfImp: lvlOfImps[2], description: `I will study at least ten pages of my textbook a day.`},
+    {user: '639f9f3d587a58ef0f055981', name: 'Learning how to cook', lvlOfImp: lvlOfImps[2], description: `Watch Gordon Ramsay's videos and copy his style of cooking!`},
+    {user: '639f9f3d587a58ef0f055981', name: 'Exercise', lvlOfImp: lvlOfImps[1], description: `10 squats, 10 burpees, 10 push-ups, 10 sit-ups`},
+    {user: '639f9f3d587a58ef0f055981', name: 'Improving social skills', lvlOfImp: lvlOfImps[0], description: `I will learn how to talk to people by talking to someone new every day.`},
   ]);
 
   console.log(habits);

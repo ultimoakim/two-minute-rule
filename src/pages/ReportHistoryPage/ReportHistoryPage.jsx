@@ -21,7 +21,6 @@ export default function ReportHistoryPage({ user, setUser }) {
         getReports();
     }, []);
 
-
     async function handleCheckToken() {
         const expDate = await checkToken();
         console.log(expDate);

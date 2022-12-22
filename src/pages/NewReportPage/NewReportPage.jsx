@@ -63,6 +63,9 @@ export default function NewReportPage({ user, setUser }) {
         setUnfinishedHabits([...unfinishedHabits, habit]);
     }
 
+    async function handleDeleteHabit(id) {
+        const habit = await habitsAPI.deleteHabit(id);
+    }
 
     return (
         <>
@@ -83,6 +86,7 @@ export default function NewReportPage({ user, setUser }) {
             <UnfinishedHabitsList
                 unfinishedHabits={unfinishedHabits.filter(habit => habit.lvlOfImp.level === activeLvl)}
                 handleAddToReport={handleAddToReport}
+                handleDeleteHabit={handleDeleteHabit}
             />
             <FinishedHabitsList
                 report={notReadyHabits}
