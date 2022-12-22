@@ -1,6 +1,6 @@
 export default function ReportListItem({ report, activeReport, setActiveReport }) {
     return (
-        <>
+        <main className='callout secondary'>
             <div
                 className={`OrderListItem ${report === activeReport ? 'selected' : ''}`}
                 onClick={() => setActiveReport(report)}
@@ -14,6 +14,6 @@ export default function ReportListItem({ report, activeReport, setActiveReport }
                     {/* <div className="smaller">{report.reportQty} Habit{report.reportQty > 1 ? 's' : ''}</div> */}
                 </div>
             </div>
-        </>
+        </main>
     );
 }

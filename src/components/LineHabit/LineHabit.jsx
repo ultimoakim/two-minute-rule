@@ -1,19 +1,21 @@
 export default function LineHabit({ lineHabit, isSubmitted, handleChangeQty }) {
     return (
-        <div className="LineItem">
-            <div className="flex-ctr-ctr">{lineHabit.habit.lvlOfImp}</div>
-            <div className="flex-ctr-ctr flex-col">
-                <span className="align-ctr">{lineHabit.habit.name}</span>
+        <div className="callout secondary">
+            {/* <div>{lineHabit.habit.lvlOfImp}</div> */}
+            <div>
+                <span>{lineHabit.habit.name}</span>
+                <br />
                 <span>{lineHabit.habit.description}</span>
             </div>
             <div className="qty" style={{ justifyContent: isSubmitted && 'center' }}>
+                <br />
                 {!isSubmitted &&
                     <button
-                        className="btn-xs"
+                        className="button alert"
                         onClick={() => handleChangeQty(lineHabit.habit._id, lineHabit.qty - 1)}
-                    >Remove</button>
+                    >Send Back to Unfinished Habits</button>
                 }
-                <span>Quantity: {lineHabit.qty}</span>
+                {/* <span>Quantity: {lineHabit.qty}</span> */}
                 {/* {!isSubmitted &&
                     <button
                         className="btn-xs"

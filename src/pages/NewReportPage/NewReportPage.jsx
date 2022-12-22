@@ -74,10 +74,10 @@ export default function NewReportPage({ user, setUser }) {
 
     return (
         <>
-            <h1>NewReportPage</h1>
-            <button onClick={() => setUnfinishedHabits(Date.now())}>Trigger Re-Render!</button>
-            <h2>Level of Importance: </h2>
-            <h4>NOTE: As a general rule, Level 3 should be the most important habits, while Level 1 is the less-important habits.</h4>
+        <div className="callout primary">
+            <h1>Create a Report!</h1>
+            {/* <button onClick={() => setUnfinishedHabits(Date.now())}>Trigger Re-Render!</button> */}
+        </div>
             <AddHabit
                 handleAddHabit={handleAddHabit}
                 levels={levels} 
@@ -88,7 +88,6 @@ export default function NewReportPage({ user, setUser }) {
                 activeLvls={activeLvl}
                 setActiveLvl={setActiveLvl}
             />
-            <h2>❌ Unfinished Habits: </h2>
             <UnfinishedHabitsList
                 unfinishedHabits={unfinishedHabits.filter(habit => habit.lvlOfImp.level === activeLvl)}
                 handleAddToReport={handleAddToReport}

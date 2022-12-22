@@ -21,7 +21,8 @@ export default function ReportDetail({ report, handleChangeQty, handleSubmitRepo
                         :
                         <span>NEW REPORT</span>
                     }
-                    <span>{new Date(report.updatedAt).toLocaleDateString()}</span>
+                    <br />
+                    <span>Date Created: {new Date(report.updatedAt).toLocaleDateString()}</span>
                 </div>
                 <div className="line-item-container flex-ctr-ctr flex-col scroll-y">
                     {lineHabits.length ?
@@ -29,7 +30,7 @@ export default function ReportDetail({ report, handleChangeQty, handleSubmitRepo
                             {lineHabits}
                             <section className="total">
                                 {report.isSubmitted ?
-                                    <span className="right">TOTAL&nbsp;&nbsp;</span>
+                                    <span className="right">Bottom of Page</span>
                                     :
                                     <button
                                         className="btn-sm"

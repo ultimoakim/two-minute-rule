@@ -23,6 +23,7 @@ export default function AddHabit({ handleAddHabit, levels, setLevels }) {
 
     return (
         <>
+        <div className="callout secondary">
             <h4>Feeling Motivated? Add another habit down below here!</h4>
             <form onSubmit={handleSubmit}>
                 <label>Name of Habit: </label>
@@ -41,8 +42,9 @@ export default function AddHabit({ handleAddHabit, levels, setLevels }) {
                     value={habitDesc}
                     onChange={evt => setHabitDesc(evt.target.value)}
                 ></textarea>
-                <button type='submit'>Add Habit!</button>
+                <button className='button success' type='submit'>Add Habit!</button>
             </form>
+        </div>
         </>
     );
 }

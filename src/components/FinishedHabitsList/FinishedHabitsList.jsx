@@ -14,14 +14,15 @@ export default function FinishedHabitsList({report, handleChangeQty, handleSubmi
         )
 
     return (
-        <div className="OrderDetail">
+        <div className="callout success">
             <div className="section-heading">
                 {report.isSubmitted ?
-                    <span>REPORT <span className="smaller">{report.reportId}</span></span>
+                    <span>REPORT <h3 className="smaller">{report.reportId}</h3></span>
                     :
-                    <span>NEW REPORT</span>
+                    <h2>✅ Completed Habits: </h2>
                 }
-                <span>{new Date(report.updatedAt).toLocaleDateString()}</span>
+                <br />
+                <span>Today's date is: {new Date(report.updatedAt).toLocaleDateString()}</span>
             </div>
             <div className="line-item-container flex-ctr-ctr flex-col scroll-y">
                 {lineHabits.length ?
@@ -32,10 +33,10 @@ export default function FinishedHabitsList({report, handleChangeQty, handleSubmi
                                 <span className="right">TOTAL&nbsp;&nbsp;</span>
                                 :
                                 <button
-                                    className="btn-sm"
+                                    className="submit success button"
                                     onClick={handleSubmitReport}
                                     disabled={!lineHabits.length}
-                                >Submit Report!</button>
+                                >Finished with your habits? Submit Report!</button>
                             }
                             {/* <span>{report.totalQty}</span> */}
                             {/* <span className="right">${report.orderTotal.toFixed(2)}</span> */}

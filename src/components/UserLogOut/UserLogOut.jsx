@@ -9,8 +9,8 @@ export default function UserLogOut({user, setUser}) {
     }
 
     return(
-        <>
+        <main>
             <button className='logOutBtn' onClick={handleLogOut}>Log Out!</button>
-        </>
+        </main>
     );
 }

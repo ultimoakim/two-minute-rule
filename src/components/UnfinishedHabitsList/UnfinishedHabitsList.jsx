@@ -14,12 +14,16 @@ export default function UnfinishedHabitsList({ unfinishedHabits, handleAddToRepo
       handleEditHabit={handleEditHabit}
     />
   );
+  console.log(habits);
 
   return (
     <>
-      <main className="UnfinishedHabitsList">
-        {habits}
-      </main>
+      <div className="callout alert">
+      <h2>❌ Unfinished Habits: </h2>
+        <main className="UnfinishedHabitsList">
+          {habits.length === 0 ? 'No habits created yet 😢' : habits}
+        </main>
+      </div>
     </>
   );
 }

@@ -26,9 +26,10 @@ export default function ReportHistoryPage({ user, setUser }) {
         console.log(expDate);
     }
     return (
-        <>
-            <h1>ReportHistoryPage</h1>
-            <button onClick={handleCheckToken}>Check When My Login Expires</button>
+        <main className='callout primary'>
+            <h1>Report History</h1>
+            <h3>Click on a report to view its details!</h3>
+            {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
             {/* Render a ReportList component */}
             <ReportList
                 reports={reports}
@@ -36,7 +37,9 @@ export default function ReportHistoryPage({ user, setUser }) {
                 setActiveReport={setActiveReport}
             />
             {/* Render the existing ReportDetail component */}
+            <br />
+            <h3>Selected Report: </h3>
             <ReportDetail report={activeReport} />
-        </>
+        </main>
     );
 }
